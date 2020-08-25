@@ -32,6 +32,13 @@ const App = () => {
     if (depsDone && completedAt === null) return "uncompleted"
   }
 
+  const updateData = (state, id) => {
+    const index = groupData.findIndex(({id: taskId}) => id === taskId)
+    const tasks = [...groupData]
+    tasks[index].completedAt = state === "completed" ? null : "lol"
+    setGroupData(tasks)
+  }
+
   return (
     <div className='app-grid'>
       <Suspense fallback={<div>{"Loading..."}</div>}>
@@ -41,6 +48,7 @@ const App = () => {
             tasks={groups[selectedGroup]}
             getTaskState={getTaskState}
             onClick={setSelectedGroup}
+            updateData={updateData}
           /> :
           <GroupList
             groups={groupsList}

@@ -14,7 +14,7 @@ import './styles.css'
  * }} GroupDetailProps
  * @param {GroupDetailProps} props 
  */
-const GroupDetail = ({name, tasks, onClick, getTaskState}) => {
+const GroupDetail = ({name, tasks, onClick, getTaskState, updateData}) => {
   return (
     <div className='app-body'>
       <div className='header-container'>
@@ -27,6 +27,7 @@ const GroupDetail = ({name, tasks, onClick, getTaskState}) => {
           return (
             <Task
               state={getTaskState(task)}
+              updateData={updateData}
               key={id}
               name={name}
               {...task}

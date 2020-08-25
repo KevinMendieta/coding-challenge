@@ -18,13 +18,13 @@ const getIconPath = (state) => {
  * }} TaskProps
  * @param {TaskProps} TaskProps
  */
-const Task = ({state, name, onToggle, id}) => {
+const Task = ({state, name, id, updateData}) => {
   return (
     <li className='task-item'>
       <img
         className={state === 'blocked' ? 'disabled' : ''}
         src={getIconPath(state)}
-        onClick={() => onToggle(id, state)}
+        onClick={() => updateData(state, id)}
         alt='task state'
       />
       <h3 className={state}>{name}</h3>
