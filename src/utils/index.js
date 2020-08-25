@@ -1,7 +1,7 @@
 /**
  * Group the groups data by the group key
  * @param {object[]} groups
- * @returns {object} groupsMap 
+ * @returns {object} groupsMap
  */
 export const groupByGroup = groups => {
   const groupsMap = {}
@@ -26,13 +26,13 @@ export const groupByGroup = groups => {
  */
 export const flatMap = map => {
   return Object.keys(map).map(key => {
-    return {name: key, tasks: map[key]}
+    return { name: key, tasks: map[key] }
   })
 }
 
 /**
  * take the task list and converts it into a map with id -> tasks.
- * @param {object[]} data 
+ * @param {object[]} data
  * @returns {object} tasksMap
  */
 export const mapTasks = data => {

@@ -8,10 +8,10 @@ import './styles.css'
  * @typedef {{
  * title: string
  * }} TitleProps
- * @param {TitleProps} props 
+ * @param {TitleProps} props
  */
-const Title = ({title}) => (
-  <div className='title-container'>
+const Title = ({ title }) => (
+  <div className="title-container">
     <h1>{title}</h1>
   </div>
 )

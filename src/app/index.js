@@ -11,16 +11,13 @@ const App = () => {
 
   return (
     <AppProvider>
-      <div className='app-grid'>
-        <Suspense fallback={<div>{"Loading..."}</div>}>
-          {selectedGroup ?
-            <GroupDetail
-              name={selectedGroup}
-              onClick={setSelectedGroup}
-            /> :
-            <GroupList
-              onClick={setSelectedGroup}
-            />}
+      <div className="app-grid">
+        <Suspense fallback={<div>{'Loading...'}</div>}>
+          {selectedGroup ? (
+            <GroupDetail name={selectedGroup} onClick={setSelectedGroup} />
+          ) : (
+            <GroupList onClick={setSelectedGroup} />
+          )}
         </Suspense>
       </div>
     </AppProvider>

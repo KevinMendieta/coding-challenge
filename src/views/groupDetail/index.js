@@ -13,20 +13,20 @@ import './styles.css'
  * tasks: object[],
  * onClick: Function
  * }} GroupDetailProps
- * @param {GroupDetailProps} props 
+ * @param {GroupDetailProps} props
  */
-const GroupDetail = ({name, onClick}) => {
-  const {getTaskState, updateData, groups} = useAppState()
+const GroupDetail = ({ name, onClick }) => {
+  const { getTaskState, updateData, groups } = useAppState()
   const tasks = groups[name]
   return (
-    <div className='app-body'>
-      <div className='header-container'>
-        <Title title={name}/>
-        <span onClick={() => onClick(null)}>{"<< ALL GROUPS"}</span>
+    <div className="app-body">
+      <div className="header-container">
+        <Title title={name} />
+        <span onClick={() => onClick(null)}>{'<< ALL GROUPS'}</span>
       </div>
-      <ul className='tasks-wrapper'>
+      <ul className="tasks-wrapper">
         {tasks.map(task => {
-          const {task: name, id} = task
+          const { task: name, id } = task
           return (
             <Task
               key={id}

@@ -5,7 +5,7 @@ import React from 'react'
 import { useAppState } from '../../contexts/AppContext'
 import './styles.css'
 
-const getIconPath = (state) => {
+const getIconPath = state => {
   if (state === 'completed') return '/completed.svg'
   if (state === 'uncompleted') return '/incomplete.svg'
   return '/locked.svg'
@@ -19,15 +19,15 @@ const getIconPath = (state) => {
  * }} TaskProps
  * @param {TaskProps} TaskProps
  */
-const Task = ({state, name, id}) => {
-  const {updateData} = useAppState()
+const Task = ({ state, name, id }) => {
+  const { updateData } = useAppState()
   return (
-    <li className='task-item'>
+    <li className="task-item">
       <img
         className={state === 'blocked' ? 'disabled' : ''}
         src={getIconPath(state)}
         onClick={() => updateData(state, id)}
-        alt='task state'
+        alt="task state"
       />
       <h3 className={state}>{name}</h3>
     </li>

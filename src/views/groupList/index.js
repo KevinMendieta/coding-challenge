@@ -13,14 +13,12 @@ import { useAppState } from '../../contexts/AppContext'
  * @param {GroupSummaryProps} props
  */
 const GroupSummary = ({ tasks }) => {
-  const {getTaskState} = useAppState()
+  const { getTaskState } = useAppState()
   let completed = 0
   tasks.forEach(element => {
-    if (getTaskState(element) === "completed") completed += 1
+    if (getTaskState(element) === 'completed') completed += 1
   })
-  return (
-    <p>{`${completed} OF ${tasks.length} TASKS COMPLETE`}</p>
-  )
+  return <p>{`${completed} OF ${tasks.length} TASKS COMPLETE`}</p>
 }
 
 /**
@@ -28,26 +26,26 @@ const GroupSummary = ({ tasks }) => {
  * groups: object[],
  * onClick: Function
  * }} GroupListProps
- * @param {GroupListProps} props 
+ * @param {GroupListProps} props
  */
-const GroupList = ({onClick}) => {
-  const {groupsList} = useAppState()
+const GroupList = ({ onClick }) => {
+  const { groupsList } = useAppState()
   return (
-    <div className='app-body'>
-      <div className='title-wrapper'>
-        <Title title={"Things To Do"}/>
+    <div className="app-body">
+      <div className="title-wrapper">
+        <Title title={'Things To Do'} />
       </div>
-      <ul className='group-list-wrapper'>
-        {groupsList.map(({name, tasks}) => (
+      <ul className="group-list-wrapper">
+        {groupsList.map(({ name, tasks }) => (
           <li
-            className='group-list-item'
+            className="group-list-item"
             key={name}
             onClick={() => onClick(name)}
           >
-            <img src='/group.svg' alt='arrow'/>
-            <div className='group-summary-container'>
+            <img src="/group.svg" alt="arrow" />
+            <div className="group-summary-container">
               <h3>{name}</h3>
-              <GroupSummary tasks={tasks}/>
+              <GroupSummary tasks={tasks} />
             </div>
           </li>
         ))}
