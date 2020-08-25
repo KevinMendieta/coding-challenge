@@ -41,8 +41,11 @@ const GroupList = ({groups, onClick, getTaskState}) => {
             key={name}
             onClick={() => onClick(name)}
           >
-            <h3>{name}</h3>
-            <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
+            <img src='/group.svg' alt='arrow'/>
+            <div className='group-summary-container'>
+              <h3>{name}</h3>
+              <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
+            </div>
           </li>
         ))}
       </ul>

@@ -21,9 +21,21 @@
 .group-list-item {
   height: 5rem;
   display: flex;
+  align-items: center;
+  border-bottom: gainsboro 1px solid;
+}
+
+.group-list-item img{
+  width: 1rem;
+  height: 1rem;
+}
+
+.group-summary-container {
+  height: 5rem;
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border-bottom: gainsboro 1px solid;
+  margin-left: 30px;
 }
 
 .group-list-item:hover {
