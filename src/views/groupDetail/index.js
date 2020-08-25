@@ -2,6 +2,7 @@
 import React from 'react'
 
 // Components
+import { useAppState } from '../../contexts/AppContext'
 import Task from '../../components/task'
 import Title from '../../components/title'
 import './styles.css'
@@ -14,7 +15,9 @@ import './styles.css'
  * }} GroupDetailProps
  * @param {GroupDetailProps} props 
  */
-const GroupDetail = ({name, tasks, onClick, getTaskState, updateData}) => {
+const GroupDetail = ({name, onClick}) => {
+  const {getTaskState, updateData, groups} = useAppState()
+  const tasks = groups[name]
   return (
     <div className='app-body'>
       <div className='header-container'>
@@ -26,10 +29,10 @@ const GroupDetail = ({name, tasks, onClick, getTaskState, updateData}) => {
           const {task: name, id} = task
           return (
             <Task
-              state={getTaskState(task)}
-              updateData={updateData}
               key={id}
+              state={getTaskState(task)}
               name={name}
+              updateData={updateData}
               {...task}
             />
           )

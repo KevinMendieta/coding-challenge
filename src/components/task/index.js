@@ -2,6 +2,7 @@
 import React from 'react'
 
 // components
+import { useAppState } from '../../contexts/AppContext'
 import './styles.css'
 
 const getIconPath = (state) => {
@@ -18,7 +19,8 @@ const getIconPath = (state) => {
  * }} TaskProps
  * @param {TaskProps} TaskProps
  */
-const Task = ({state, name, id, updateData}) => {
+const Task = ({state, name, id}) => {
+  const {updateData} = useAppState()
   return (
     <li className='task-item'>
       <img

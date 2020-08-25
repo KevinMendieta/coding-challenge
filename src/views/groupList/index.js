@@ -4,6 +4,7 @@ import React from 'react'
 // Components
 import Title from '../../components/title'
 import './styles.css'
+import { useAppState } from '../../contexts/AppContext'
 
 /**
  * @typedef {{
@@ -11,7 +12,8 @@ import './styles.css'
  * }} GroupSummaryProps
  * @param {GroupSummaryProps} props
  */
-const GroupSummary = ({ tasks, getTaskState }) => {
+const GroupSummary = ({ tasks }) => {
+  const {getTaskState} = useAppState()
   let completed = 0
   tasks.forEach(element => {
     if (getTaskState(element) === "completed") completed += 1
@@ -28,14 +30,15 @@ const GroupSummary = ({ tasks, getTaskState }) => {
  * }} GroupListProps
  * @param {GroupListProps} props 
  */
-const GroupList = ({groups, onClick, getTaskState}) => {
+const GroupList = ({onClick}) => {
+  const {groupsList} = useAppState()
   return (
     <div className='app-body'>
       <div className='title-wrapper'>
         <Title title={"Things To Do"}/>
       </div>
       <ul className='group-list-wrapper'>
-        {groups.map(({name, tasks}) => (
+        {groupsList.map(({name, tasks}) => (
           <li
             className='group-list-item'
             key={name}
@@ -44,7 +47,7 @@ const GroupList = ({groups, onClick, getTaskState}) => {
             <img src='/group.svg' alt='arrow'/>
             <div className='group-summary-container'>
               <h3>{name}</h3>
-              <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
+              <GroupSummary tasks={tasks}/>
             </div>
           </li>
         ))}
