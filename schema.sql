@@ -1,20 +1,20 @@
 -- Create Groups table with constraints
 CREATE TABLE groups(
-  id SERIAL PRIMARY KEY,
+  group_id SERIAL PRIMARY KEY,
   group_name VARCHAR NOT NULL
 );
 
 -- Create Tasks table with constraints
 CREATE TABLE tasks(
-  id SERIAL PRIMARY KEY,
-  group_id INT,
-  completes_task_id INT,
+  task_id SERIAL PRIMARY KEY,
+  group_id INT REFERENCES groups(group_id) ON DELETE CASCADE,
   task_name VARCHAR NOT NULL,
-  completed_at TIMESTAMP,
-  CONSTRAINT fk_group
-    FOREIGN KEY (group_id)
-      REFERENCES groups(id),
-  CONSTRAINT fk_completes_task
-    FOREIGN KEY (completes_task_id)
-      REFERENCES tasks(id)
+  completed_at TIMESTAMP
+);
+
+-- Create tasks dependencies table.
+CREATE TABLE tasks_dependencies (
+  task_id INT REFERENCES tasks(task_id) ON DELETE CASCADE,
+  dep_task_id INT REFERENCES tasks(task_id) ON DELETE CASCADE,
+  CONSTRAINT tasks_dependencies_pk PRIMARY KEY (task_id, dep_task_id)
 );
