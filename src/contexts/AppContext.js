@@ -20,6 +20,7 @@ export const AppProvider = ({ children }) => {
     getData()
   }, [])
 
+  // data structures
   const groups = groupByGroup(groupData)
   const groupsList = flatMap(groups)
   const tasksMap = mapTasks(groupData)
@@ -36,7 +37,7 @@ export const AppProvider = ({ children }) => {
   }
 
   // toggles task state given the task id
-  const updateData = (state, id) => {
+  const toggleTaskState = (state, id) => {
     const index = groupData.findIndex(({ id: taskId }) => id === taskId)
     const tasks = [...groupData]
     tasks[index].completedAt = state === 'completed' ? null : new Date()
@@ -48,7 +49,7 @@ export const AppProvider = ({ children }) => {
     groupsList,
     tasksMap,
     getTaskState,
-    updateData
+    toggleTaskState
   }
 
   return <AppContext.Provider value={appState}>{children}</AppContext.Provider>

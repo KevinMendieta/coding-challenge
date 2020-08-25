@@ -16,7 +16,7 @@ import './styles.css'
  * @param {GroupDetailProps} props
  */
 const GroupDetail = ({ name, onClick }) => {
-  const { getTaskState, updateData, groups } = useAppState()
+  const { getTaskState, toggleTaskState, groups } = useAppState()
   const tasks = groups[name]
   return (
     <div className="app-body">
@@ -32,7 +32,7 @@ const GroupDetail = ({ name, onClick }) => {
               key={id}
               state={getTaskState(task)}
               name={name}
-              updateData={updateData}
+              toggleTaskState={toggleTaskState}
               {...task}
             />
           )
