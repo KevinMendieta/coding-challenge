@@ -10,6 +10,6 @@
   margin-left: 30px;
 }
 
-.task-item:hover {
-  background-color: rgba(0,0,0, 0.1);
+img:hover {
+  cursor: pointer;
 }

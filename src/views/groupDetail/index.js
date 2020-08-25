@@ -25,7 +25,12 @@ const GroupDetail = ({name, tasks, onClick, getTaskState}) => {
         {tasks.map(task => {
           const {task: name, id} = task
           return (
-            <Task state={getTaskState(task)} key={id} name={name}/>
+            <Task
+              state={getTaskState(task)}
+              key={id}
+              name={name}
+              {...task}
+            />
           )
         })}
       </ul>

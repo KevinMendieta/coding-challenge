@@ -36,7 +36,11 @@ const GroupList = ({groups, onClick, getTaskState}) => {
       </div>
       <ul className='group-list-wrapper'>
         {groups.map(({name, tasks}) => (
-          <li className='group-list-item' key={name} onClick={() => onClick(name)}>
+          <li
+            className='group-list-item'
+            key={name}
+            onClick={() => onClick(name)}
+          >
             <h3>{name}</h3>
             <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
           </li>

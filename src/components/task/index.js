@@ -4,6 +4,12 @@ import React from 'react'
 // components
 import './styles.css'
 
+const getIconPath = (state) => {
+  if (state === 'completed') return '/completed.svg'
+  if (state === 'uncompleted') return '/incomplete.svg'
+  return '/locked.svg'
+}
+
 /**
  * @typedef {{
  * state: string,
@@ -12,10 +18,15 @@ import './styles.css'
  * }} TaskProps
  * @param {TaskProps} TaskProps
  */
-const Task = ({state, name, onToggle}) => {
+const Task = ({state, name, onToggle, id}) => {
   return (
     <li className='task-item'>
-      <span onClick={() => onToggle(state)}>{"xxx"}</span>
+      <img
+        className={state === 'blocked' ? 'disabled' : ''}
+        src={getIconPath(state)}
+        onClick={() => onToggle(id, state)}
+        alt='task state'
+      />
       <h3 className={state}>{name}</h3>
     </li>
   )
