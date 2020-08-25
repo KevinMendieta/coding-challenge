@@ -9,10 +9,13 @@ import React from 'react'
  * }} GroupSummaryProps
  * @param {GroupSummaryProps} props
  */
-const GroupSummary = ({ tasks }) => {
-  const completed = 3
+const GroupSummary = ({ tasks, getTaskState }) => {
+  let completed = 0
+  tasks.forEach(element => {
+    if (getTaskState(element) === "completed") completed += 1
+  })
   return (
-    <p>{`${completed} OF ${tasks.lenght} TASKS COMPLETE`}</p>
+    <p>{`${completed} OF ${tasks.length} TASKS COMPLETE`}</p>
   )
 }
 
@@ -23,15 +26,15 @@ const GroupSummary = ({ tasks }) => {
  * }} GroupListProps
  * @param {GroupListProps} props 
  */
-const GroupList = ({groups, onClick}) => {
+const GroupList = ({groups, onClick, getTaskState}) => {
   return (
     <div>
       <h1>{"Things To Do"}</h1>
       <ul>
         {groups.map(({name, tasks}) => (
-          <li onClick={() => onClick(name)}>
+          <li key={name} onClick={() => onClick(name)}>
             <h1>{name}</h1>
-            <GroupSummary tasks={tasks} />
+            <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
           </li>
         ))}
       </ul>

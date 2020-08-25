@@ -12,7 +12,7 @@ import Task from '../../components/task'
  * }} GroupDetailProps
  * @param {GroupDetailProps} props 
  */
-const GroupDetail = ({name, tasks, onClick}) => {
+const GroupDetail = ({name, tasks, onClick, getTaskState}) => {
   return (
     <div>
       <div>
@@ -20,7 +20,12 @@ const GroupDetail = ({name, tasks, onClick}) => {
         <span onClick={() => onClick(null)}>{"ALL GROUPS"}</span>
       </div>
       <ul>
-        {tasks.map(task => <Task {...task}/>)}
+        {tasks.map(task => {
+          const {task: name, id} = task
+          return (
+            <Task state={getTaskState(task)} key={id} name={name}/>
+          )
+        })}
       </ul>
     </div>
   )
