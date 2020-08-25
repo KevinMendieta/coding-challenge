@@ -1,0 +1,15 @@
+.task-item {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: gainsboro 1px solid;
+}
+
+.task-item h3{
+  margin: 0;
+  margin-left: 30px;
+}
+
+.task-item:hover {
+  background-color: rgba(0,0,0, 0.1);
+}

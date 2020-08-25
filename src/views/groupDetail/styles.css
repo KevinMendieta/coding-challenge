@@ -1,0 +1,19 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: gainsboro 1px solid;
+}
+
+.header-container span {
+  color: #5699cc;
+}
+
+span:hover {
+  cursor: pointer;
+}
+
+.tasks-wrapper {
+  margin: 0;
+  padding: 0;
+}

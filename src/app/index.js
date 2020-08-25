@@ -33,9 +33,11 @@ const App = () => {
   }
 
   return (
-    <Suspense fallback={<div>{"Loading..."}</div>}>
-      {selectedGroup ? <GroupDetail name={selectedGroup} tasks={groups[selectedGroup]} getTaskState={getTaskState} onClick={setSelectedGroup}/> : <GroupList groups={groupsList} onClick={setSelectedGroup} getTaskState={getTaskState}/>}
-    </Suspense>
+    <div className='app-grid'>
+      <Suspense fallback={<div>{"Loading..."}</div>}>
+        {selectedGroup ? <GroupDetail name={selectedGroup} tasks={groups[selectedGroup]} getTaskState={getTaskState} onClick={setSelectedGroup}/> : <GroupList groups={groupsList} onClick={setSelectedGroup} getTaskState={getTaskState}/>}
+      </Suspense>
+    </div>
   )
 }
 

@@ -2,6 +2,8 @@
 import React from 'react'
 
 // Components
+import Title from '../../components/title'
+import './styles.css'
 
 /**
  * @typedef {{
@@ -28,12 +30,14 @@ const GroupSummary = ({ tasks, getTaskState }) => {
  */
 const GroupList = ({groups, onClick, getTaskState}) => {
   return (
-    <div>
-      <h1>{"Things To Do"}</h1>
-      <ul>
+    <div className='app-body'>
+      <div className='title-wrapper'>
+        <Title title={"Things To Do"}/>
+      </div>
+      <ul className='group-list-wrapper'>
         {groups.map(({name, tasks}) => (
-          <li key={name} onClick={() => onClick(name)}>
-            <h1>{name}</h1>
+          <li className='group-list-item' key={name} onClick={() => onClick(name)}>
+            <h3>{name}</h3>
             <GroupSummary tasks={tasks} getTaskState={getTaskState}/>
           </li>
         ))}

@@ -2,6 +2,7 @@
 import React from 'react'
 
 // components
+import './styles.css'
 
 /**
  * @typedef {{
@@ -13,9 +14,9 @@ import React from 'react'
  */
 const Task = ({state, name, onToggle}) => {
   return (
-    <li>
-      <span onClick={() => onToggle(state)}>{state}</span>
-      <h1>{name}</h1>
+    <li className='task-item'>
+      <span onClick={() => onToggle(state)}>{"xxx"}</span>
+      <h3 className={state}>{name}</h3>
     </li>
   )
 }

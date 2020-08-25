@@ -3,6 +3,8 @@ import React from 'react'
 
 // Components
 import Task from '../../components/task'
+import Title from '../../components/title'
+import './styles.css'
 
 /**
  * @typedef {{
@@ -14,12 +16,12 @@ import Task from '../../components/task'
  */
 const GroupDetail = ({name, tasks, onClick, getTaskState}) => {
   return (
-    <div>
-      <div>
-        <h1>{name}</h1>
-        <span onClick={() => onClick(null)}>{"ALL GROUPS"}</span>
+    <div className='app-body'>
+      <div className='header-container'>
+        <Title title={name}/>
+        <span onClick={() => onClick(null)}>{"<< ALL GROUPS"}</span>
       </div>
-      <ul>
+      <ul className='tasks-wrapper'>
         {tasks.map(task => {
           const {task: name, id} = task
           return (
